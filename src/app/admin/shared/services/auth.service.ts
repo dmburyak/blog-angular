@@ -54,7 +54,6 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse): Observable<any> {
     const message: string = error.error.error.message;
-    console.log(message);
     switch (message) {
       case 'INVALID_EMAIL':
         this.error$.next('INVALID EMAIL');
