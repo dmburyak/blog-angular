@@ -52,4 +52,8 @@ export class PostService {
     return this.http.delete<void>(`${environment.fbDBUrl}/posts/${id}.json`);
   }
 
+  update(post: Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.fbDBUrl}/posts/${post.id}.json`, post);
+  }
+
 }

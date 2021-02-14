@@ -2,14 +2,14 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-control"
-         [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+         [ngClass]="{invalid: form.get('title')!.touched && form.get('title')!.invalid}"
     >
       <label for="title">Title:</label>
       <input type="text" id="title" formControlName="title">
       <div class="validation"
-           *ngIf="form.get('title').touched && form.get('title').invalid"
+           *ngIf="form.get('title')!.touched && form.get('title')!.invalid"
       >
-        <small *ngIf="form.get('title').errors.required">Enter post title</small>
+        <small *ngIf="form.get('title')!.errors!.required">Enter post title</small>
 
       </div>
     </div>
@@ -21,11 +21,10 @@
     <button
       class="btn btn-primary"
       type="submit"
-      [disabled]="form.invalid"
+      [disabled]="form.invalid || submitted"
     >
-      Update
+      Update post
     </button>
-
   </form>
 </div>
 
